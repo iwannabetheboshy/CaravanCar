@@ -1,0 +1,551 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main id="main" class="home">
+    <div class="row">
+        <div class="col-12">
+            <div class="hero">
+                <h1>Подбор, покупка и доставка автомобилей<br>с аукционов Японии и Кореи по всей России</h1>
+                <button class="px-4 py-2">Подобрать авто</button>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="section-h">&nbsp&nbspЛучшие предложения&nbsp&nbsp</h1>
+    <!--     style='background-image: url("{% static "img/catalog-hero.jpg" %}");'>-->
+    <section class="catalog">
+        <div class="sub_header">
+            <div class="wrapper">
+                <ul>
+                    <li class="" onclick="checkBatteryLife('Седаны')">Седаны</li>
+                    <li class="" onclick="checkBatteryLife('Гибриды')">Гибриды</li>
+                    <li class="" onclick="checkBatteryLife('Кроссоверы')">Кроссоверы</li>
+                    <li class="">Универсалы</li>
+                    <li class="">Хэтчбеки</li>
+                    <li class="">Внедорожники</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="demo" class="carousel slide" data-bs-interval="false" data-ride="carousel" data-pause="hover" style="z-index: 1000">
+            <div id="filter-active" class="carousel-item active">
+                <div class="carousel-inner">
+                    {% static "img/cars/" as path %}
+                    {% for item in cars_major %}
+                    {% if item.body == 'Седаны' %}
+                    <div class="custom-col px-1">
+                        <div>
+                            <img src="{{path}}{{item.image}}" alt="Los Angeles" class="d-block w-100">
+                        </div>
+
+                        <div class="row info">
+                            <p class="col-12 col-lg-6 car-name">{{ item.car_model }}</p>
+                            <p class="col-12 col-lg-6 price">от {{ item.price }} ₽</p>
+                            <div class="prop car-name">
+                                <span class="col-2">{{ item.year }}&nbsp&nbsp</span>
+                                <span class="col-2">&nbsp{{ item.engine }}L&nbsp&nbsp</span>
+                                <span class="col-2 border-0">&nbsp{{ item.wheel }}&nbsp&nbsp</span>
+                                <p class="col-12 col-lg-6 pay border-0">
+                                    <a href="">Купить!</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="filter" class="carousel-item">
+                <div class="carousel-inner">
+                    {% static "img/cars/" as path %}
+
+                    {% for item in cars_minor %}
+                    {% if item.body == 'Седаны' %}
+                    <div class="custom-col px-1">
+                        <img src="{{path}}{{item.image}}" alt="Los Angeles" class="d-block w-100">
+                        <div class="row info">
+                            <p class="col-6 car-name">{{ item.car_model }}</p>
+                            <p class="col-6 price">от {{ item.price }} ₽</p>
+                            <div class="prop car-name">
+                                <span class="col-2">{{ item.year }}&nbsp&nbsp</span>
+                                <span class="col-2">&nbsp{{ item.engine }}L&nbsp&nbsp</span>
+                                <span class="col-2 border-0">&nbsp{{ item.wheel }}&nbsp&nbsp</span>
+                                <p class="col-6 pay border-0">
+                                    <a href="">Купить!</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <button class="custom-swiper-button-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="bi-chevron-left"></span>
+            </button>
+            <button class="custom-swiper-button-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="bi-chevron-right"></span>
+            </button>
+        </div>
+    </section>
+
+
+    <h1 class="section-h">&nbsp&nbspСхема работы с нами&nbsp&nbsp</h1>
+    <section class="mask" data-aos="fade-up" style='background-image: url("{% static "img/body-00.png" %}");'>
+        <div class="steps">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{% static 'img/steps/1.svg' %}" alt="Los Angeles" class="icons d-block">
+                    <h3>Свяжитесь с нами</h3>
+                    <p>
+                        Заполните форму и наш<br>
+                        менеджер свяжется с Вами<br>
+                        для подбора автомобиля<br>
+                        по оптимальной цене
+                    </p>
+                </div>
+                <div class="col-4">
+                    <img src="{% static 'img/steps/3.svg' %}" alt="Los Angeles" class="icons d-block">
+                    <h3>Подбор и покупка авто</h3>
+                    <div class="test">
+                        <p>
+                            Подберем для вас варианты<br>
+                            на аукционах и делаем ставки<br>
+                            в рамках вашего бюджета
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="{% static 'img/steps/4.svg' %}" alt="Los Angeles" class="icons d-block">
+                    <h3>Доставка авто по РФ</h3>
+                    <p>
+                        Отправляем выбранной Вами<br>
+                        транспортной компанией по всей России
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 top-circle">
+                    <div class="col-6 terminator"></div>
+                    <div class="col-12">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <ellipse style="stroke: #a20000; fill: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                        </svg>
+
+                        <svg id="n1" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-4 top-circle">
+                    <div class="col-6 terminator"></div>
+                    <div class="col-12">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                        </svg>
+
+                        <svg id="n3" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-4 top-circle">
+                    <div class="col-6 terminator"></div>
+                    <div class="col-12">
+                        <svg width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="col-12 horizont"></div>
+                </div>
+
+                <div class="col-2"></div>
+                <div class="col-4 doc">
+
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                    </svg>
+
+                    <svg style="z-index: 100;" id="n2" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                    </svg>
+
+                    <div class="row">
+                        <div class="col-6 terminator"></div>
+                    </div>
+                </div>
+                <div class="col-4 doc">
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                    </svg>
+
+                    <svg style="z-index: 100;" id="n4" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <ellipse style="stroke: #a20000;" cx="8.007" cy="7.993" rx="6.541" ry="6.52"/>
+                    </svg>
+                    <div class="row">
+                        <div class="col-6 terminator"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <img src="{% static 'img/steps/2.svg' %}" alt="Los Angeles" class="d-block float-right" style="width: 160px; float: right;">
+                </div>
+                <div class="col-4">
+                    <h3>Заключение догвора</h3>
+                    <p>
+                        Прописываем характеристики и<br>
+                        конечную стоимость автомобиля
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h3>Оплата</h3>
+                    <p>
+                        После покупки Вы оплачиваете <br>
+                        стоимость автомобиля и его доставку
+                    </p>
+                </div>
+                <div class="col-2">
+                    <img src="{% static 'img/steps/5.svg' %}" alt="Los Angeles" class="d-block float-left" style="width: 65px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h1 class="section-h">&nbsp&nbspДоставка автомобяли&nbsp&nbsp</h1>
+    {% include "map.html" %}
+
+    <h1 class="section-h">&nbsp&nbspОтзывы клиентов&nbsp&nbsp</h1>
+    <section id="reviews" class="reviews container" data-aos="fade-up">
+
+        <div class="testimonials-slider swiper-container" data-aos="fade-up">
+            <div class="swiper-wrapper d-flex justify-cntent-center align-items-center">
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/1.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/2.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/3.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/4.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/5.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/6.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/7.webp' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <img src="{% static 'img/reviews/8.webp' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+
+    <h1 class="section-h">&nbsp&nbspОставьте заявку&nbsp&nbsp</h1>
+    <section class="bg-contact" style='background-image: url("{% static "img/body-01.png" %}");'>
+    <div class="steps feedback">
+        <div class="form-section">
+            <div class="row">
+                <div class="col-lg-12 contact-form">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-success">
+                                <strong>{{ message }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7 col-sm-12 px-3">
+                                <h3 style="color: #a20000;">
+                                    Остались вопросы?
+                                </h3>
+                                <p style="padding-top: 10px">
+                                    Наш менеджер подберет для вас автомобиль!<br>
+                                    Оставьте ваши контакты, мы свяжемся с вами для уточнения характеристик.
+
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Имя</label><br>
+                                        {{ form.first_name }}
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Телефон</label><br>
+                                        {{ form.phone }}
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn py-2 px-5">Отправить сообщение</button>
+                            </div>
+
+                            <div class="col-lg-5 col-sm-12 address">
+                                <h2>
+                                    Caravan <span>Car</span>
+                                </h2>
+                                <h3 class="office">
+                                    Главный офис
+                                </h3>
+                                <p style="padding-top: 10px">
+                                    Владивосток, ул. Светланская, дом 89, оф. 305
+                                </p>
+
+                                <div class="row py-3">
+                                    <div class="col-lg-4 col-6">
+                                        <h3>
+                                            Телефон
+                                        </h3>
+                                        <p style="padding-top: 10px">
+                                            +7 (950) 281-37-55
+                                        </p>
+                                    </div>
+
+                                    <div class="col-lg-4 col-6">
+                                        <h3>
+                                            Email
+                                        </h3>
+                                        <p style="padding-top: 10px">
+                                            vals.tarasov@gmail.com
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!--                                    <h3>-->
+                                <!--                                        График работы-->
+                                <!--                                    </h3>-->
+                                <!--                                    <p style="padding-top: 10px">-->
+                                <!--                                        ПН-ПТ    10:00 - 19:00 (UTC +10)<br>-->
+                                <!--                                        СБ             11:00 - 16:00 (UTC +10)<br>-->
+                                <!--                                        ВС             Выходной<br>-->
+                                <!--                                    </p>-->
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+
+
+
+
+    <script>
+        document.getElementById("n1").className += " load";
+    </script>
+
+    <script>
+        function checkBatteryLife(name) {
+            if (name == 'Гибриды') {
+                document.getElementById('filter-active').innerHTML =
+                    "{% for item in cars_major %}" +
+                        "{% if item.body == 'Гибриды' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+
+                document.getElementById('filter').innerHTML =
+                    "{% for item in cars_minor %}" +
+                        "{% if item.body == 'Гибриды' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+            }
+
+            else if (name == 'Кроссоверы') {
+                document.getElementById('filter-active').innerHTML =
+                    "{% for item in cars_major %}" +
+                        "{% if item.body == 'Кроссоверы' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+
+                document.getElementById('filter').innerHTML =
+                    "{% for item in cars_minor %}" +
+                        "{% if item.body == 'Кроссоверы' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+            }
+
+            else if (name == 'Седаны') {
+                document.getElementById('filter-active').innerHTML =
+                    "{% for item in cars_major %}" +
+                        "{% if item.body == 'Седаны' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+
+                document.getElementById('filter').innerHTML =
+                    "{% for item in cars_minor %}" +
+                        "{% if item.body == 'Седаны' %}" +
+                            "<div class='custom-col px-1'>" +
+                                "<img src='{{path}}{{item.image}}' alt='Los Angeles' class='d-block w-100'>" +
+                                "<div class='row info'>" +
+                                    "<p class='col-6 car-name'>{{ item.car_model }}</p>" +
+                                    "<p class='col-6 price'>от {{ item.price }} ₽</p>" +
+                                    "<div class='prop car-name'>" +
+                                        "<span class='col-2'>{{ item.year }}&nbsp&nbsp</span>" +
+                                        "<span class='col-2'>&nbsp{{ item.engine }}L&nbsp&nbsp</span>" +
+                                        "<span class='col-2 border-0'>&nbsp{{ item.wheel }}&nbsp&nbsp</span>" +
+                                        "<p class='col-6 pay border-0'>" +
+                                            "<a href=''>Купить!</a>" +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "{% endif %}" +
+                    "{% endfor %}";
+            }
+        }
+    </script>
+
+
+
+
+</main>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+<script src="{% static 'vendor/map/delivery.js' %}"></script>
+<script src="{% static 'vendor/map/bundle-common.js' %}"></script>
+<script src="{% static 'vendor/map/odometer.min.js' %}"></script>
+
+
+<script src="{% static 'js/q.js' %}"></script>
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+{% endblock %}
