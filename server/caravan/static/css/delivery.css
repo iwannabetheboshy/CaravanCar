@@ -204,7 +204,7 @@ box-shadow:inset 0 0 0 1px #fff
 }
 
 .services-price-calc-cities-toggle__list::-webkit-scrollbar-thumb {
-background-color:#1febb7;
+background-color:#a20000;
 border-radius:2px
 }
 
@@ -228,8 +228,8 @@ border-bottom:1px solid #e6e6e6
 }
 
 .services-price-calc-cities-toggle__list-item_active {
-color:#b3b3b3;
-opacity:.8
+color:#a20000;
+opacity:.6
 }
 
 .services-calс-money__val {

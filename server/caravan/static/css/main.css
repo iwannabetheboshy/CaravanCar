@@ -49,8 +49,8 @@ section {
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: rgba(201, 201, 201, .7);
-  border: 1px solid #000;
+  background: #fff;
+  border: 1px solid #a20000;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -60,13 +60,12 @@ section {
 .scroll-top i {
   font-size: 28px;
   font-weight: bold;
-  color: #000;
+  color: #a20000;
   line-height: 0;
 }
 
 .scroll-top:hover {
-  background: rgba(255, 255, 255, .8);
-  color: #fff;
+  background-color: rgba(162, 0, 0, 0.09);
 }
 
 .scroll-top.active {
@@ -91,6 +90,7 @@ section {
 .header.sticked {
   height: 70px;
   background-color: rgba(162, 0, 0, 0.09);
+  border-bottom: 1px solid rgba(162, 0, 0, 0.2);
 
   transition: all 0.5s;
   -webkit-transition: all .5s ease-in-out;
@@ -98,13 +98,14 @@ section {
   -o-transition: all .5s ease-in-out;
 }
 
-.header .logo h1 span {
-   color: #a20000;
-   transition: all 0.5s;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
+.header.sticked #rm-bb{
+  transition: all 0.5s;
+  border-bottom: none !important;
+  font-weight: bold;
 }
+
+
+
 
 /*.header.sticked .logo h1 span {
   color: #fff !important;
@@ -193,7 +194,8 @@ section {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #212529;
+    color: #a20000 !important;
+    font-weight: bold;
   }
 
   .navbar .dropdown ul {
@@ -293,6 +295,11 @@ section {
 .header .social .phone {
   font-size: 25px;
   padding-right: 15px;
+}
+
+.header .social a span:hover {
+  transform: .5s;
+  color: #a20000;
 }
 
 /*--------------------------------------------------------------
@@ -767,7 +774,6 @@ section {
 }
 
 .steps .icons {
-  width: 40%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -843,7 +849,10 @@ section {
 }
 
 
-
+.document {
+  position: relative;
+  top: -20px;
+}
 
 
 
@@ -961,6 +970,7 @@ svg ellipse {
   display: block;
   text-align: center;
   transition: 0.3s;
+  border: 1px solid #a20000;
 }
 
 .reviews .testimonial-item img {
@@ -1202,15 +1212,16 @@ svg ellipse {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-color: rgba(162, 0, 0, 0.09);
+  border: 1px solid #a20000;
+  border-color: rgba(162, 0, 0, 0.3) !important;
   border-radius: 50%;
-  color: #000 !important;
+  color: #a20000 !important;
   line-height: 40px;
   font-size: 22px;
 }
 
 .footer .footer-legal .social-links a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(162, 0, 0, 0.09);
 }
 
 .footer .footer-legal .social-links .secret {
@@ -1242,7 +1253,8 @@ svg ellipse {
 }
 
 .footer .credits a {
-  color: #fff !important;
+  color: #000 !important;
   text-decoration: none;
+  font-weight: bold;
 }
 
