@@ -4,7 +4,10 @@ from django.contrib import messages
 import os
 from .models import Post
 from .forms import ContactForm
-import operator
+import telebot
+
+BotToken = '5638926120:AAGY4X-hy1gCozFZzWAqWsZ-JhJOZweCfE8'
+bot = telebot.TeleBot(BotToken)
 
 
 def home(request):
@@ -27,7 +30,10 @@ def home(request):
             form.save()
             messages.success(request, 'Ваше сообщение успешно отправлено!')
 
-            return HttpResponseRedirect("/")
+            bot.send_message(5268041667,
+                             'Заявка на покупку\nИмя: {0}\nТелефон: {1}'.format(name, phone))
+
+            return HttpResponseRedirect("./#contact-block")
 
     form = ContactForm()
     return render(request, 'caravan/home.html', {'cars_major': cars_major,

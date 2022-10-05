@@ -292,17 +292,17 @@
                     <div class="col-lg-12 contact-form">
                         <form action="" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <div>
-                                {% if messages %}
-                                {% for message in messages %}
-                                <div class="alert alert-success">
-                                    <strong>{{ message }}</strong>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-                            </div>
                             <div class="row">
                                 <div class="col-lg-7 col-sm-12 px-3">
+                                    <div>
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <div class="alert alert-success">
+                                            <strong>{{ message }}</strong>
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
                                     <h3 style="color: #a20000;">
                                         Остались вопросы?
                                     </h3>
@@ -314,11 +314,11 @@
 
                                     <div class="row">
                                         <div class="col-6">
-                                            <label>Имя</label><br>
+                                            <label>Имя</label>
                                             {{ form.first_name }}
                                         </div>
                                         <div class="col-6">
-                                            <label>Телефон</label><br>
+                                            <label>Телефон</label>
                                             {{ form.phone }}
                                         </div>
                                     </div>
