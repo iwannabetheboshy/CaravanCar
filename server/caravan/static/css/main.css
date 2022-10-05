@@ -589,6 +589,14 @@ section {
   cursor: pointer;
 }
 
+/*--------------------------------------------------------------
+# Button Change Color
+--------------------------------------------------------------*/
+.ch-button {
+  color: rgb(164,0,0);
+  background-color: rgb(164,0,0, 0.09);
+}
+
 @media (max-width: 1250px) {
   .home .sub_header ul li {
     padding-right: 10px;

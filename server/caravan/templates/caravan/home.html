@@ -387,8 +387,10 @@
     <script>
         function checkBatteryLife(name) {
             if (name == 'Гибриды') {
-                document.getElementById('hyb').style.color = 'rgb(164,0,0)';
-                document.getElementById('hyb').style.backgroundColor = 'rgb(164,0,0, 0.09)';
+                document.getElementById("hyb").className += " ch-button";
+               	document.getElementById("cro").classList.remove("ch-button");
+               	document.getElementById("sed").classList.remove("ch-button");
+
                 document.getElementById('filter-active').innerHTML =
                     "{% for item in cars_major %}" +
                         "{% if item.body == 'Гибриды' %}" +
@@ -433,8 +435,10 @@
             }
 
             else if (name == 'Кроссоверы') {
-                document.getElementById('cro').style.color = 'rgb(164,0,0)';
-                document.getElementById('cro').style.backgroundColor = 'rgb(164,0,0, 0.09)';
+                document.getElementById("cro").className += " ch-button";
+               	document.getElementById("hyb").classList.remove("ch-button");
+               	document.getElementById("sed").classList.remove("ch-button");
+
                 document.getElementById('filter-active').innerHTML =
                     "{% for item in cars_major %}" +
                         "{% if item.body == 'Кроссоверы' %}" +
@@ -479,8 +483,10 @@
             }
 
             else if (name == 'Седаны') {
-                document.getElementById('sed').style.color = 'rgb(164,0,0)';
-                document.getElementById('sed').style.backgroundColor = 'rgb(164,0,0, 0.09)';
+                document.getElementById("sed").className += " ch-button";
+               	document.getElementById("hyb").classList.remove("ch-button");
+               	document.getElementById("cro").classList.remove("ch-button");
+
                 document.getElementById('filter-active').innerHTML =
                     "{% for item in cars_major %}" +
                         "{% if item.body == 'Седаны' %}" +
